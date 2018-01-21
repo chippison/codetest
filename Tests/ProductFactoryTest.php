@@ -1,6 +1,8 @@
 <?php
 namespace Tests;
 use Models\ProductFactory;
+use Models\SalesTaxExemptProduct;
+use Models\BasicProduct;
 
 class ProductFactoryTest extends \PHPUnit_Framework_TestCase{
     private $obj;
@@ -67,6 +69,51 @@ class ProductFactoryTest extends \PHPUnit_Framework_TestCase{
         $p3 = ProductFactory::createProducts($arr3);
         $mergedArr = array_merge($p1,$p2,$p3);
         $this->assertContainsOnlyInstancesOf('Interfaces\ProductInterface', $mergedArr);
+    }
+    public function testProductsCreatedEqualToTestData1(){
+        $arr1 = array(
+            array('quantity'=>1,'description'=>'book','price'=>12.49),
+            array('quantity'=>1,'description'=>'music CD','price'=>14.99),
+            array('quantity'=>1,'description'=>'chocolate bar','price'=>0.85)
+        );
+        $arr = array(
+            new SalesTaxExemptProduct(12.49, 'book',false),
+            new BasicProduct(14.99, 'music CD',false),
+            new SalesTaxExemptProduct(0.85,'chocolate bar',false)
+        );
+        $p1 = ProductFactory::createProducts($arr1);
+        $this->assertEquals($arr, $p1);
+
+    }
+    public function testProductsCreatedEqualToTestData2(){
+        $arr1 = array(
+            array('quantity'=>1,'description'=>'imported box of chocolates','price'=>10.00),
+            array('quantity'=>1,'description'=>'imported bottle of perfume','price'=>47.50),
+        );
+        $arr = array(
+            new SalesTaxExemptProduct(10.00, 'imported box of chocolates',true),
+            new BasicProduct(47.50, 'imported bottle of perfume',true)
+        );
+        $p1 = ProductFactory::createProducts($arr1);
+        $this->assertEquals($arr, $p1);
+
+    }
+    public function testProductsCreatedEqualToTestData3(){
+        $arr1 = array(
+            array('quantity'=>1,'description'=>'imported bottle of perfume','price'=>27.99),
+            array('quantity'=>1,'description'=>'bottle of perfume','price'=>18.99),
+            array('quantity'=>1,'description'=>'packet of headache pills','price'=>9.75),
+            array('quantity'=>1,'description'=>'box of imported chocolates','price'=>11.25),
+        );
+        $arr = array(
+            new BasicProduct(27.99, 'imported bottle of perfume',true),
+            new BasicProduct(18.99, 'bottle of perfume',false),
+            new SalesTaxExemptProduct(9.75, 'packet of headache pills',false),
+            new SalesTaxExemptProduct(11.25, 'box of imported chocolates',true)
+        );
+        $p1 = ProductFactory::createProducts($arr1);
+        $this->assertEquals($arr, $p1);
+
     }
 
 }
