@@ -1,5 +1,6 @@
 This project is for completing a codetest for Kitomba.
-/*Project explaination*/
+**Project explaination**
+
 Project objective is to find a solution for applying Sales Tax and Import Tax to items in a shopping cart and printing out a receipt with taxes included to each item and a total sales tax added and the total price to be paid. This project has a bunch classes that work together to produce the output. These classes are:
 Product.php - abstract class where all "products" will be based on.
             - contains the functions to compute net price, compute total taxes to be paid, get description, check if product is imported, and validate variables passed to constructor.
@@ -14,6 +15,7 @@ ProductFactory.php - simply creates Products from an array of items  passed.
 Receipt.php - this prints out a receipt in the proper format based on an input of array of "Products".
 
 **RUNNING THE PROGRAM:**
+
 NOTE: Composer dependency manager is needed for this project as we use its autoloader for loading needed classes.
 To run the program, simply download the repository to your localhost.
 
@@ -25,7 +27,7 @@ You can also run UnitTest to see tests and compare it against expected output fr
 
 To run unit tests simply call "phpunit --bootstrap vendor/autoload.php --testdox Tests" from the root directory of the project.
 
-/**Assumptions in the project**/
+**Assumptions in the project**
 
 This project assumes that there is a UI frontend to get user shopping cart items and parse it to an array (Array structure is described on top under ProductFactory description). This array is then passed on to a factory (ProductFactory.php) to create "Product" Objects. Output of "ProductFactory" is an array of "Products" and this is then passed on to "Receipt" object and then processes objects to output receipt once "printReceipt" method is called on Receipt object. 
 
