@@ -1,0 +1,15 @@
+{
+	"name" : "chippison/codetest",
+	"description" : "MyCodeTest",
+	"type" : "project",
+	"minimum-stability" : "stable",
+	"autoload" : {
+		"psr-4" : {
+			"" : "src/"
+		}
+	},
+	"require" : {
+        "phpunit/phpunit" : "5.7.*",
+        "phpunit/php-code-coverage": "*"
+    }
+}
