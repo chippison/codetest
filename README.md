@@ -1,4 +1,5 @@
 This project is for completing a codetest for Kitomba.
+
 **Project explaination**
 
 Project objective is to find a solution for applying Sales Tax and Import Tax to items in a shopping cart and printing out a receipt with taxes included to each item and a total sales tax added and the total price to be paid. This project has a bunch classes that work together to produce the output. These classes are:
