@@ -13,8 +13,7 @@ ProductFactory.php - simply creates Products from an array of items  passed.
 
 Receipt.php - this prints out a receipt in the proper format based on an input of array of "Products".
 
-/**RUNNING THE PROGRAM:**/
-
+**RUNNING THE PROGRAM:**
 NOTE: Composer dependency manager is needed for this project as we use its autoloader for loading needed classes.
 To run the program, simply download the repository to your localhost.
 
